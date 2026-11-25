@@ -3,7 +3,6 @@ import numpy as np
 import os,json
 
 def load_env(path=".env"):
-    """Read KEY=VALUE lines from .env into the environment (a shell `export` takes precedence)."""
     if os.path.exists(path):
         with open(path) as f:
             for line in f:
