@@ -22,10 +22,10 @@ class Encoder:
         return normalize(self.svd.transform(self.tfidf.transform(texts)))
 
 
-    def lda_cluster(texts, k ,seed):
-        counts = CountVectorizer(stop_words="english", min_df=2, max_df=0.95, max_features=20000).fit_transform(texts)
-        topic = LatentDirichletAllocation(k, random_state=seed, max_iter=20).fit_transform(counts).argmax(1)
-        return np.unique(topic, return_inverse=True)[1] 
+def lda_cluster(texts, k ,seed):
+    counts = CountVectorizer(stop_words="english", min_df=2, max_df=0.95, max_features=20000).fit_transform(texts)
+    topic = LatentDirichletAllocation(k, random_state=seed, max_iter=20).fit_transform(counts).argmax(1)
+    return np.unique(topic, return_inverse=True)[1] 
     
 def bm25(texts, query,k1 = 1.5, b =0.75):
     cv = CountVectorizer(stop_words="english")
